@@ -1,0 +1,52 @@
+<h1>Add Blood Stock</h1>
+<div class="card " style="width: 60rem; height: 50rem ;  margin: 0 auto;top: 10%; ">
+    <div class="card-body">
+<form novalidate  [formGroup]="frmstock" (ngSubmit)=" addBloodStock(frmstock)">
+
+    <div>
+        <label>Blood Group<span class="text-danger">*</span></label> <br/>
+        <select type="text" class="form-control" name="Blood_Group" formControlName="Blood_Group">
+            <option value="1">A+</option>
+            <option value="2">A-</option>
+            <option value="3">B+</option>
+            <option value="4">B-</option>
+            <option value="5">AB+</option>
+            <option value="6">AB-</option>
+            <option value="7">O+</option>
+            <option value="8">O-</option>
+        </select>
+        <div *ngIf="a.Blood_Group.invalid && a.Blood_Group.dirty">
+            <span *ngIf="a.Blood_Group.errors?.required">BloodGroup is requrired</span>
+        </div>
+    </div>
+    <div class="col-12">
+        <label for="Quantity" class="form-label">Quantity<span class="text-danger">*</span></label>
+        <input type="number" class="form-control" id="Quantity" name="Quantity" formControlName="Quantity" required>
+        <div *ngIf="a.Quantity.invalid && a.Quantity.dirty">
+            <span *ngIf="a.Quantity.errors?.required">Quantity is requrired</span>
+        </div>
+      </div>
+
+    <div>
+        <label> Stock Date<span class="text-danger">*</span></label> <br/>
+        <input type="date" class="form-control" name="Stock_Date" formControlName="Stock_Date">
+        <div *ngIf="a.Stock_Date.invalid && a.Stock_Date.dirty">
+            <span *ngIf="a.Stock_Date.errors?.required">Date is requrired</span>
+        </div>
+    </div>
+
+    <div>
+        <label for="Location" class="form-label">Location<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="Location" name="Location" formControlName="Location" placeholder="Location" required>
+        <div *ngIf="a.Location.invalid && a.Location.dirty">
+          <span *ngIf="a.Location.errors?.required">Location Required</span>
+        </div>
+      </div>
+
+    <div class="form-group">
+        <br><button type="submit" value="Submit" [disabled]="frmstock.invalid" name="btnLogin" class="btn btn-primary">Add Stock </button>        
+      </div>
+   
+</form>
+</div>
+</div>

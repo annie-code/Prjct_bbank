@@ -1,0 +1,146 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="isSignIn">
+        <div class="col-md-4">
+            <h1 style="font-weight: bold;">
+                Sign In
+            </h1>
+            <form novalidate [formGroup]="frmCompany" (ngSubmit)="login(frmCompany)">
+                <div>
+                    <h6 class="text-danger">Fields marked with* are mandatory</h6>
+                    <div *ngIf="fr.UserName.invalid && fr.UserName.dirty">
+                        <span *ngIf="fr.UserName.errors?.required">
+                            <ul>
+                            <li class="text-danger">
+                                UserName is required 
+                            </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div *ngIf="fr.Password.invalid && fr.Password.dirty">
+                        <span *ngIf="fr.Password.errors?.required">
+                            <ul>
+                            <li class="text-danger">
+                                Password is Required
+                            </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div *ngIf ="logged">
+                        <ul>
+                            <li class="text-danger">
+                                Invalid username/password
+                            </li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <br><label>
+                        UserName <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" name ="UserName" formControlName="UserName" class="form-control" />
+                    
+                    
+                </div>
+    
+                <div class="form-group">
+                    <br><label>
+                        Password <span class="text-danger">*</span>
+                    </label>
+                    <input type="password" name="Password" formControlName="Password" class="form-control"/>
+                </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label>
+                        UserType <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select" name="User_Type" formControlName="User_Type" placeholder="Select">
+                            <option value="1">Donor</option>
+                            <option value="2">Client</option>
+                            <option value="3">Hospital</option>
+                        </select> 
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="submit" value="Submit" [disabled]="frmCompany.invalid" name="btnLogin" class="btn btn-primary">         
+                                <span class="text-right">
+                                   <br> <a href="#" (click) = "gotoReset()" class="text-primary">Forget/Reset Password</a>
+                                </span>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row" *ngIf="!isSignIn">
+        <div class="col-md-4">
+            <h1 style="font-weight: bold;">
+                Enter User Details
+            </h1>
+            <form novalidate [formGroup]="frmReset" (ngSubmit)="verify(frmReset)">
+                <div>
+                    <h6 class="text-danger">Fields marked with* are mandatory</h6>
+                    <div *ngIf="frReset.UserName.invalid && frReset.UserName.dirty">
+                        <span *ngIf="frReset.UserName.errors?.required">
+                            <ul>
+                            <li class="text-danger">
+                                UserName is required 
+                            </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div *ngIf="frReset.Email.invalid && frReset.Email.dirty">
+                        <span *ngIf="frReset.Email.errors?.required">
+                            <ul>
+                            <li class="text-danger">
+                                Email is Required
+                            </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div *ngIf ="logged">
+                        <ul>
+                            <li class="text-danger">
+                                Invalid username/Email
+                            </li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <br><label>
+                        UserName <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" name ="UserName" formControlName="UserName" class="form-control" />
+                    
+                    
+                </div>
+
+                <div class="form-group">
+                    <br><label>
+                    Email <span class="text-danger">*</span>
+                    </label>
+                    <input type="email" name="Email" formControlName="Email" class="form-control"/>
+                </div>
+                <br>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <input type="submit" value="Next" [disabled]="frmReset.invalid" name="btnReset" class="btn btn-primary">         
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

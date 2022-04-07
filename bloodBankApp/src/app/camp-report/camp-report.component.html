@@ -1,0 +1,28 @@
+<h1>Camp List</h1>
+<table class="table table-hover">
+    <thead>
+    <tr>
+    <th> CampId</th>
+    <th>Camp Name</th>
+    <th>location</th>
+    <th>date</th>
+    <th>time</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of camp">
+        <td>{{c.CampId}}</td>
+        <td>{{c.CampName}}</td>
+        <td>{{c.Location}}</td>
+        <td>{{c.Date}}</td>
+        <td>{{c.Time}}</td>
+        <td>{{c.IsActive}}</td>
+        <td><button type= "button" class="btn btn-primary" id="{{c.CampId}}" (click)="Delete(c.CampId)"> Delete</button></td>
+     <td> <button type="button"  class="btn btn-primary"[routerLink]="['/modifyCamp',c.CampId]">Update</button></td>
+    </tr>
+    <tbody>
+
+</table>

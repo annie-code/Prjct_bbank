@@ -1,0 +1,41 @@
+<div class="card " style="width: 60rem; height: 50rem ;  margin: 0 auto;top: 10%; ">
+  <div class="card-body">
+    <h5 class="card-title">Schedule Camp</h5>
+<form novalidate method="post"#frm="ngForm">
+    <div class="col-md-6">
+      <label for="" class="form-label">Camp Name</label>
+      <input type="text" class="form-control"  #cname="ngModel" name="campName" [(ngModel)]="camp.campName" required>
+      <div *ngIf="cname.invalid && cname.touched"> <span *ngIf="cname.errors?.required" class="text-danger small">CampName is required</span></div>
+    </div>
+    <div class="col-md-6">
+      <label for="" class="form-label">Location</label>
+      <input type="text" class="form-control" name="location" #clocation="ngModel" [(ngModel)]="camp.location" required>
+     
+      <div *ngIf="clocation.invalid && clocation.touched"> <span *ngIf="clocation.errors?.required" class="text-danger small">Location is required</span></div>
+    </div>
+    <div class="col-md-6">
+      <label for="" class="form-label">Date</label>
+      <input type="date" class="form-control" name="date" #cdate="ngModel" [(ngModel)]="camp.date" required>
+      <div *ngIf="cdate.invalid && cdate.touched"> <span *ngIf="cdate.errors?.required" class="text-danger small">Location is required</span></div>
+    </div>
+    <div class="col-md-6">
+      <label for="" class="form-label">Time</label>
+      <input type="time" class="form-control" name="time" #ctime="ngModel" [(ngModel)]="camp.time" required>
+      <div *ngIf="ctime.invalid && ctime.touched"> <span *ngIf="ctime.errors?.required" class="text-danger small">Location is required</span></div>
+    </div>
+    <div class="form-check">
+      <input type="radio" name="IsActive" [(ngModel)]="camp.IsActive" [value]="true">
+      <label class="form-check-label" >
+        Active Camp
+      </label>
+      <input type="radio" name="IsActive" [(ngModel)]="camp.IsActive" [value]="false">
+      <label class="form-check-label" >
+        InActive Camp
+      </label>
+    </div>
+    <div class="col-12">
+      <button type="submit" value="Submit" (click)="saveCamp()"  [disabled]="!frm.valid" name="btnSubmit" class="btn btn-primary">Post</button>
+    </div>
+</form>
+</div>
+</div>

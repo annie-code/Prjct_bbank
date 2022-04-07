@@ -1,0 +1,101 @@
+<h1>Camp Registration</h1>
+<div class="card " style="width: 60rem; height: 50rem ;  margin: 0 auto;top: 10%; ">
+    <div class="card-body">
+<form novalidate  [formGroup]="frmCamp" (ngSubmit)="campRegistration(frmCamp)">
+    <div>
+        <label for="UserName" >User Name<span class="text-danger">*</span></label> <br/>
+        <input type="text" class="form-control" name="UserName" formControlName="UserName">
+        <div *ngIf="c.UserName.invalid && c.UserName.dirty">
+            <span *ngIf="c.UserName.errors?.required">User Name  is required</span>
+        </div>
+    </div>
+
+    <div>
+        <label for="Donor_FirstName" >Donor First Name<span class="text-danger">*</span></label> <br/>
+        <input type="text" class="form-control" name="Donor_FirstName" formControlName="Donor_FirstName">
+        <div *ngIf="c.Donor_FirstName.invalid && c.Donor_FirstName.dirty">
+            <span *ngIf="c.Donor_FirstName.errors?.required">Donor FirstName is required</span>
+        </div>
+
+    </div>
+
+
+    <div>
+        <label for="Donor_LastName" >Donor Last Name<span class="text-danger">*</span></label> <br/>
+        <input type="text" class="form-control" name="Donor_LastName" formControlName="Donor_LastName">
+        <div *ngIf="c.Donor_LastName.invalid && c.Donor_LastName.dirty">
+            <span *ngIf="c.Donor_LastName.errors?.required">DonorLastName is required</span>
+        </div>
+
+    </div>
+
+    <div>
+        <label for="DonorAge" >Donor Age <span class="text-danger">*</span></label> <br/>
+        <input type="text" class="form-control" name="Donor_Age" formControlName="Donor_Age">
+        <div *ngIf="c.Donor_Age.invalid && c.Donor_Age.dirty">
+            <span *ngIf="c.Donor_Age.errors?.required">Donor Age is required</span>
+        </div>
+    </div>
+
+    <div>
+        <label for="Donor_Gender" >Donor Gender<span class="text-danger">*</span></label> <br/>
+        <input type="text" class="form-control" name="Donor_Gender" formControlName="Donor_Gender">
+        <div *ngIf="c.Donor_Gender.invalid && c.Donor_Gender.dirty">
+            <span *ngIf="c.Donor_Gender.errors?.required">Donor Genderis required</span>
+        </div>
+    </div>
+    
+    <div>
+        <label for="Donor_ContactNo" >Donor Contact Number<span class="text-danger">*</span></label> <br/>
+        <input type="text" name="Donor_ContactNo" class="form-control" formControlName="Donor_ContactNo" minlength="10" maxlength="10"  pattern="[1-9]{1}[0-9]{9}" required>
+        <div *ngIf="c.Donor_ContactNo.invalid && c.Donor_ContactNo.dirty">
+            <span *ngIf="c.Donor_ContactNo.errors?.required">Donor ContactNo is required</span>
+        </div>
+    </div>
+
+    <div>
+        <label for="Blood_Group"  selected>Donor Blood Group<span class="text-danger">*</span></label> <br/>
+        <select type="text" class="form-control" name="Blood_Group" formControlName="Blood_Group">
+            <option value="1">A+</option>
+            <option value="2">A-</option>
+            <option value="3">B+</option>
+            <option value="4">B-</option>
+            <option value="5">AB+</option>
+            <option value="6">AB-</option>
+            <option value="7">O+</option>
+            <option value="8">O-</option>
+        </select>
+        <div *ngIf="c.Blood_Group.invalid && c.Blood_Group.dirty">
+            <span *ngIf="c.Blood_Group.errors?.required">Donor BloodGroup is required</span>
+        </div>
+    </div>
+    <div>
+        <label >Donor Height</label> <br/>
+        <input type="text"class="form-control" name="Height" formControlName="Height" required>
+        <div *ngIf="c.Height.invalid && c.Height.dirty">
+            <span *ngIf="c.Height.errors?.required">Donor Height is required</span>
+        </div>
+    </div>
+    <div>
+        <label >Donor Weight</label> <br/>
+        <input type="text" class="form-control" name="Weight" formControlName="Weight" required>
+        <div *ngIf="c.Weight.invalid && c.Weight.dirty">
+            <span *ngIf="c.Weight.errors?.required">Donor Weight is required</span>
+        </div>
+    </div>
+
+    <div>
+        <label >Donor Email Id</label> <br/>
+        <input type="text" class="form-control" name="Email" formControlName="Email" required>
+        <div *ngIf="c.Email.invalid && c.Email.dirty">
+            <span *ngIf="c.Email.errors?.required">Donor Email Id is required</span>
+        </div>
+    </div>
+    
+
+    <div class="col-12">
+        <br><button type="submit" value="Submit" [disabled]="frmCamp.invalid" name="btnSubmit" class="btn btn-primary">Register</button>
+      </div>
+</form>
+</div>
+</div>

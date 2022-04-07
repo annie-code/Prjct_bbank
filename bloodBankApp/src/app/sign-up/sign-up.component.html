@@ -1,0 +1,140 @@
+<div class="card " style="width: 60rem; height: 50rem ;  margin: 0 auto;top: 10%; ">
+  <div class="card-body">
+    <h5 class="card-title">SignUp</h5>
+<form class="row g-3 needs-validation" novalidate [formGroup]="frmCompany" (ngSubmit)="register(frmCompany)">
+  <h6 class="text-danger">Fields marked with* are mandatory</h6>
+    <div class="col-md-6">
+      <label for="User_FirstName" class="form-label">First Name<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="User_FirstName" name="User_FirstName"  formControlName="User_FirstName" required>
+      <div *ngIf="s.User_FirstName.invalid && s.User_FirstName.dirty">
+        <span *ngIf="s.User_FirstName.errors?.required">User First Name requrired</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="User_LastName" class="form-label">Last Name<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="User_LastName"  name="User_LastName" formControlName="User_LastName" required>
+      <div *ngIf="s.User_LastName.invalid && s.User_LastName.dirty">
+        <span *ngIf="s.User_LastName.errors?.required">User Last Name requrired</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="User_Age" class="form-label">Age<span class="text-danger">*</span></label>
+      <input type="number" class="form-control" id="User_Age" name="User_Age" formControlName="User_Age" required>
+      <div *ngIf="s.User_Age.invalid && s.User_Age.dirty">
+        <span *ngIf="s.User_Age.errors?.required">User Age requrired</span>
+       <div *ngIf="s.User_Age.errors?.min">
+         Minimum Age is Required 18
+       </div>
+       <div *ngIf="s.User_Age.errors?.max">
+        Maximun Age is Required 60
+      </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="Password" class="form-label">Password<span class="text-danger">*</span></label>
+      <input type="password" class="form-control" id="Password" formControlName="Password" name="Password" required>
+      <div *ngIf="s.Password.invalid && s.Password.dirty">
+        <span *ngIf="s.Password.errors?.required">Password is required</span>
+        <div *ngIf="s.Password.errors?.minlength">
+         Minimum word required 4
+        </div>
+        <div *ngIf="s.Password.errors?.maxlength">
+          Max word required 10
+       </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      <label for="Email" class="form-label">Email<span class="text-danger">*</span></label>
+      <input type="email" class="form-control" id="Email" formControlName="Email" name="Email" pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" required>
+      <div *ngIf="s.Email.invalid && s.Email.dirty">
+        <span *ngIf="s.Email.errors?.required">User Email requrired</span>
+        <span *ngIf="s.Email.errors?.pattern">Invalid Mail</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="ConfirmPassword" class="form-label">Confirm Password<span class="text-danger">*</span></label>
+      <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword"  formControlName="ConfirmPassword" appConfirmEqualValidator="Password" required>
+      <div *ngIf="s.ConfirmPassword.invalid && s.ConfirmPassword.dirty">
+        <span *ngIf="s.ConfirmPassword.errors?.required">Please Confirm Password</span>
+      </div>
+      <div *ngIf="s.ConfirmPassword.invalid && s.ConfirmPassword.dirty">
+        <span *ngIf="s.ConfirmPassword.errors?.notEqual">Password and ConfirmPassword Does not Match</span>
+        
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="UserName" class="form-label">UserName<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="UserName" name="UserName" formControlName="UserName"
+      (blur)= "checkIfAvailable(frmCompany.value.UserName)" required>
+      <span class="text-primary" *ngIf="!invalid && frmCompany.value.UserName != ''">Avaliable</span>
+      <span class="text-danger" *ngIf="invalid">UserName Already Exists</span>
+    </div>
+
+    <div class="col-12">
+      <label for="Location" class="form-label">Location<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="Location" name="Location" formControlName="Location" placeholder="Location" required>
+      <div *ngIf="s.Location.invalid && s.Location.dirty">
+        <span *ngIf="s.Location.errors?.required">Location Required</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="Height" class="form-label" >Height(in feet)<span class="text-danger">*</span></label>
+      <input type="text"class="form-control" id="Height" name="Height" formControlName="Height" required>
+      <div *ngIf="s.Height.invalid && s.Height.dirty">
+        <span *ngIf="s.Height.errors?.required">Donor Height is required</span>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+      <label for="Weight" class="form-label" >Weight<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" name="Weight" formControlName="Weight" required>
+      <div *ngIf="s.Weight.invalid && s.Weight.dirty">
+        <span *ngIf="s.Weight.errors?.required">Donor Height is required</span>
+    </div>
+  </div>
+
+    <div class="col-md-6">
+      <label for="User_ContactNo" class="form-label">Contact No<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="User_ContactNo" name="User_ContactNo" formControlName="User_ContactNo" minlength="10" maxlength="10" 
+      pattern="[1-9]{1}[0-9]{9}" required>
+      <div *ngIf="s.User_ContactNo.invalid && s.User_ContactNo.dirty">
+        <span *ngIf="s.User_ContactNo.errors?.required">Contact Number Required</span>
+        <span *ngIf="s.User_ContactNo.errors?.pattern">Invalid Contact No</span>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <label for="User_Gender" selected>Gender<span class="text-danger">*</span></label>
+    <select class="form-select" id="User_Gender" name="User_Gender" formControlName="User_Gender" required>
+      
+      <option value="1">Female</option>
+      <option value="2">Male</option>
+      <option value="3">Other</option>
+    </select>
+    </div>
+    <div class="col-md-6">
+      <label for="User_Type" selected>UserType<span class="text-danger">*</span></label>
+    <select class="form-select" id="User_Type" name="User_Type" formControlName="User_Type" required>
+      
+      <option value="1">Donor</option>
+      <option value="2">Client</option>
+      
+    </select>
+    </div>
+         
+    <div class="col-12">
+      <button type="submit" value="Submit" [disabled]="frmCompany.invalid" name="btnSubmit" class="btn btn-primary">Sign up</button>
+    </div>
+  </form>
+  </div>
+</div>
+
+

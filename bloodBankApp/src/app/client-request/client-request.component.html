@@ -1,0 +1,65 @@
+<div class="card " style="width: 60rem; height: 50rem ;  margin: 0 auto;top: 10%; ">
+  <div class="card-body">
+    <h5 class="card-title">Request</h5>
+<form novalidate method="post" [formGroup]="frmCompany" (ngSubmit)="Submit(frmCompany)">
+    <div class="col-md-6">
+      <label for="" class="form-label">User First Name</label>
+      <input type="text" class="form-control"  name="firstName" formControlName="firstName" required>
+      <div *ngIf="fr.firstName.invalid && fr.firstName.touched"> 
+        <span *ngIf="fr.firstName.errors?.required" class="text-danger small">User First Name is required</span>
+      </div>
+    </div>
+    
+    
+
+    <div class="col-md-6">
+      <label for="" class="form-label">User Last Name</label>
+      <input type="text" class="form-control" name="lastName"  formControlName="lastName" required>
+      <div *ngIf="fr.lastName.invalid && fr.lastName.touched"> 
+        <span *ngIf="fr.lastName.errors?.required" class="text-danger small">User Last Name is required</span>
+      </div>
+    </div>
+
+    
+
+    <div class="col-md-6">
+      <label for="" class="form-label">Description</label>
+      <input type="text" class="form-control" name="description" formControlName="description" required>
+      <div *ngIf="fr.description.invalid && fr.description.touched"> <span *ngIf="fr.description.errors?.required" class="text-danger small">Description is required</span></div>
+    </div>
+    <div class="col-md-6">
+      <label for="" class="form-label">Quantity</label>
+      <input type="number" class="form-control" name="quantity" formControlName="quantity" required>
+      <div *ngIf="fr.quantity.invalid && fr.quantity.touched"> <span *ngIf="fr.quantity.errors?.required" class="text-danger small">Quantity is required</span></div>
+    </div>
+    <div class="col-md-6">
+      <label for="" class="form-label">UserName</label>
+      <input type="text" class="form-control" name="userName" formControlName="userName" required>
+      <div *ngIf="fr.userName.invalid && fr.userName.touched"> <span *ngIf="fr.userName.errors?.required" class="text-danger small">UserName is required</span></div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="" class="form-label">Email</label>
+      <input type="text" class="form-control" name="email" pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" formControlName="email" required>
+      <div *ngIf="fr.email.invalid && fr.email.touched"> <span *ngIf="fr.email.errors?.required" class="text-danger small">Email is required</span></div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="" class="form-label">Location</label>
+      <input type="text" class="form-control" name="location"  formControlName="location" required>
+      <div *ngIf="fr.location.invalid && fr.location.touched"> <span *ngIf="fr.location.errors?.required" class="text-danger small">Location is required</span></div>
+    </div>
+    
+    <div class="col-md-6">
+      <label for="" class="form-label">Contact No</label>
+      <input type="text" class="form-control" name="contactNo" minlength="10" maxlength="10" 
+      pattern="[1-9]{1}[0-9]{9}"  formControlName="contactNo" required>
+      <div *ngIf="fr.contactNo.invalid && fr.contactNo.touched"> <span *ngIf="fr.contactNo.errors?.required" class="text-danger small">ContactNo is required</span></div>
+    </div>
+   
+    <div class="col-12">
+      <br><button type="submit" value="Submit" [disabled]="frmCompany.invalid" name="btnSubmit" class="btn btn-primary">Request</button>
+    </div>
+</form>
+</div>
+</div>

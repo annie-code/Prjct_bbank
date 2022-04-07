@@ -1,0 +1,29 @@
+<div class="card " style="width: 60rem; height: 50rem ;  margin: 0 auto;top: 10%; ">
+  <div class="card-body">
+<h5>Update Blood Stock</h5>
+<form method="post">
+    <div class="col-md-6">
+        <label >Stock ID</label>
+        <input type="number" class="form-control"  name="Stock_ID "[(ngModel)]="obj.Stock_ID" >
+      </div>
+<div class="col-md-6">
+    <label >Stock Date</label>
+    <input type="date"  class="form-control" name="Stock_Date "[(ngModel)]="obj.Stock_Date" >
+  </div>
+  <div class="col-md-6">
+    <label >Quantity</label>
+    
+    <input type="number" class="form-control" name="Quantity" [(ngModel)]="obj.Quantity">
+  </div>
+  <div class="col-md-6">
+    <label >Blood Group</label>
+    
+    <input type="string" class="form-control" name="Blood_Group" [(ngModel)]="obj.Blood_Group">
+  </div>
+  <div class="col-md-6">
+    <label >Location</label>
+    
+    <input type="string" class="form-control" name="Location" [(ngModel)]="obj.Location">
+  </div>
+  <td><br><button type= "button" class="btn btn-primary"  (click)="Update()"> Update</button></td>
+  </form>

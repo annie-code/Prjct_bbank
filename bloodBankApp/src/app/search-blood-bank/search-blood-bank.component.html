@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Search Blood Bank</h1>
+      <div class="col-md-6">
+          <label for="Location" class="form-label">Location<span class="text-danger"> </span></label>
+          <input type="text" class="form-control" id="Location" name="Location" [(ngModel)]="inLocation">
+        </div>
+        <div class="col-12">
+          <br><button type="submit" value="Search" [disabled]="false" name="btnSubmit" class="btn btn-primary" (click)="search()">Search</button>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Stock ID</th>
+              <th>Blood Group</th>
+              <th>Quantity</th>
+              <th>Stock Date</th>
+              <th>Location</th>
+              <th></th>            
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of stock">
+              <td>{{a.Stock_ID}}</td>
+              <td>{{a.Blood_Group}}</td>
+              <td>{{a.Quantity}}</td>
+              <td>{{a.Stock_Date}}</td>
+              <td>{{a.Location}}</td>
+              <td><button type= "button" class="btn btn-primary" id="{{a.Stock_ID}}" (click)="Request(a.Stock_ID)"> Request</button></td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Active Camps</h1>
+      <div class="col-md-6">
+          <label for="Location" class="form-label">Location<span class="text-danger"> </span></label>
+          <input type="text" class="form-control" id="Location" name="Location" [(ngModel)]="inLocation">
+        </div>
+        <div class="col-12">
+          <br><button type="submit" value="Search" [disabled]="false" name="btnSubmit" class="btn btn-primary" (click)="search()">Search</button>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Camp ID</th>
+              <th>Camp Name</th>
+              <th>Location</th>
+              <th>Date</th>
+              <th>Active Status</th>
+              <th>Time</th>
+              <th></th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of activecamp">
+              <td>{{a.CampId}}</td>
+              
+              <td>{{a.CampName}}</td>
+              <td>{{a.Location}}</td>
+              <td>{{a.Date}}</td>
+              <td>{{a.IsActive ? 'ACTIVE' : 'INACTIVE'}}</td>
+              <td>{{a.Time}}</td>
+              <td><button type= "button" class="btn btn-primary" id="{{a.CampId}}" (click)="Register(a.CampId)">Register</button></td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

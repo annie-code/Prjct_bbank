@@ -1,0 +1,73 @@
+<div class="card " style="width: 60rem; height: 50rem ;  margin: 0 auto;top: 10%; ">
+  <div class="card-body">
+    <h5 class="card-title">Update</h5>
+<form class="row g-3 needs-validation" novalidate [formGroup]="frmCompany" (ngSubmit)="register(frmCompany)">
+  <h6 class="text-danger">Fields marked with* are mandatory</h6>
+    <div class="col-md-6">
+      <label for="User_FirstName" class="form-label" >First Name<span class="text-danger">*</span></label>
+      <input type="text" value="{{s.User_FirstName}}" class="form-control" id="User_FirstName" name="User_FirstName" formControlName="User_FirstName" required>
+      <div *ngIf="s.User_FirstName.invalid && s.User_FirstName.dirty">
+        <span *ngIf="s.User_FirstName.errors?.required">User First Name requrired</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="User_LastName" class="form-label">Last Name<span class="text-danger">*</span></label>
+      <input type="text" value="{{s.User_LastName}}" class="form-control" id="User_LastName" name="User_LastName" formControlName="User_LastName" required>
+      <div *ngIf="s.User_LastName.invalid && s.User_LastName.dirty">
+        <span *ngIf="s.User_LastName.errors?.required">User Last Name requrired</span>
+      </div>
+    </div>
+   
+    
+    <div class="col-md-6">
+      <label for="Height" class="form-label">Height(in feet)<span class="text-danger">*</span></label>
+      <input type="number" value="{{s.Height}}" class="form-control" id="Height" name="Height" formControlName="Height" required>
+      <div *ngIf="s.Height.invalid && s.Height.dirty">
+        <span *ngIf="s.Height.errors?.required">Donor Height is required</span>
+    </div>
+    </div>
+    <div class="col-md-6">
+      <label for="Weight" class="form-label">Weight(in Kg)<span class="text-danger">*</span></label>
+      <input type="number" value="{{s.Weight}}" class="form-control" id="Weight" name="Weight" formControlName="Weight" required>
+      <div *ngIf="s.Weight.invalid && s.Weight.dirty">
+        <span *ngIf="s.Weight.errors?.required">Donor Height is required</span>
+    </div>
+    </div>
+   
+    <div class="col-md-6">
+      <label for="Email" class="form-label">Email<span class="text-danger">*</span></label>
+      <input type="email" class="form-control" value="{{s.Email}}" id="Email" formControlName="Email" name="Email"  pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" required>
+      <div *ngIf="s.Email.invalid && s.Email.dirty">
+        <span *ngIf="s.Email.errors?.required">User Email requrired</span>
+        <span *ngIf="s.Email.errors?.pattern">Invalid Mail</span>
+      </div>
+    </div>
+
+    
+    
+    <div class="col-12">
+      <label for="Location" class="form-label">Location<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" value="{{s.Location}}" id="Location" name="Location" formControlName="Location" placeholder="1234 Main St" required>
+      <div *ngIf="s.Location.invalid && s.Location.dirty">
+        <span *ngIf="s.Location.errors?.required">Location Required</span>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <label for="User_ContactNo" class="form-label">Contact No<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" value="{{s.User_ContactNo}}" id="User_ContactNo" name="User_ContactNo" formControlName="User_ContactNo" minlength="10" maxlength="10" 
+      pattern="[1-9]{1}[0-9]{9}" required>
+      <div *ngIf="s.User_ContactNo.invalid && s.User_ContactNo.dirty">
+        <span *ngIf="s.User_ContactNo.errors?.required">Contact Number Required</span>
+        <span *ngIf="s.User_ContactNo.errors?.pattern">Invalid Contact No</span>
+      </div>
+    </div>
+   
+    
+         
+    <div class="col-12">
+      <button type="submit" value="Submit" [disabled]="frmCompany.invalid" name="btnSubmit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+</div>
+</div>

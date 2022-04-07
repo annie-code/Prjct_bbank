@@ -1,0 +1,30 @@
+<div class="container">
+      <div class="row">
+        <div class="col-12">
+      <h1> View Profile</h1>      
+            <table class="table table-hover"> 
+                  <thead>
+                        <tr>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>User Name</th>
+                              <th>Weight</th>
+                              <th>Height</th>
+                              
+                        </tr>
+                  </thead>
+                  <tbody>
+                        <tr *ngFor="let a of view">           
+                              <td>{{a.User_FirstName}}</td>
+                              <td>{{a.User_LastName}}</td>         
+                              <td>{{a.UserName}}</td>
+                              <td>{{a.Weight}}</td>
+                              <td>{{a.Height}}</td>
+                              
+                        </tr>
+                  </tbody>
+            </table>
+            <button type="submit" value="submit" (click)="Update()" name="btnSubmit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+</div>
